@@ -18,6 +18,10 @@
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* FAQ com o mesmo cabeçalho visual da home em todas as páginas. */
+  $$(".faq-intro .sec-tag").forEach(el => { el.textContent = "04 · Dúvidas frequentes"; });
+  $$(".faq-intro .sec-title").forEach(el => { el.textContent = "Perguntas Frequentes (FAQ)"; });
+
   /* ---------- 1. Header com fundo ao rolar ---------- */
   const header = $("#header");
   const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
