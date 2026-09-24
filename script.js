@@ -46,9 +46,22 @@
     document.body.classList.add("menu-open");
   });
 
-  $$("a", menu).forEach(a => a.addEventListener("click", closeMenu));
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape" && !menu.hidden) closeMenu();
+  $$('a', menu).forEach(a => a.addEventListener('click', closeMenu));
+  $$('.services-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+      const item = button.closest('.nav-services');
+      const open = item.classList.toggle('is-open');
+      button.setAttribute('aria-expanded', String(open));
+    });
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      $$('.nav-services.is-open').forEach(item => {
+        item.classList.remove('is-open');
+        item.querySelector('.services-toggle').setAttribute('aria-expanded', 'false');
+      });
+      if (!menu.hidden) closeMenu();
+    }
   });
 
   /* ---------- 3. Links de WhatsApp centralizados ---------- */
