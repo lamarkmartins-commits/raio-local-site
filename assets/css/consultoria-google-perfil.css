@@ -8,6 +8,8 @@
 /* A seção de resultados segue o mesmo componente editorial da home. */
 .consultoria-page .benefits{list-style:none;display:grid;margin-top:2.8rem}
 .consultoria-page .benefit{position:relative;display:grid;grid-template-columns:52px 1fr;gap:1.15rem;align-items:start;padding:1.45rem 0;border-top:1px solid var(--line)}
+.consultoria-page .benefit{grid-template-columns:1fr}
+.consultoria-page .benefit-icon,.consultoria-page .benefit-index{display:none!important}
 .consultoria-page .benefit:first-child{border-top:0;padding-top:.5rem}
 .consultoria-page .benefit-icon{width:52px;height:52px;border-radius:14px;background:var(--surface);color:var(--accent);display:grid;place-items:center}
 .consultoria-page .benefit-icon .ic{width:22px;height:22px}

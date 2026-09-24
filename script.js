@@ -22,6 +22,24 @@
   $$(".faq-intro .sec-tag").forEach(el => { el.textContent = "04 · Dúvidas frequentes"; });
   $$(".faq-intro .sec-title").forEach(el => { el.textContent = "Perguntas Frequentes (FAQ)"; });
 
+  const serviceLinks = [
+    ["servicos/criacao-de-sites.html", "Criação de sites"],
+    ["servicos/seo-local-google-mapas.html", "SEO Local e Google Maps"],
+    ["servicos/consultoria-google-perfil-da-empresa.html", "Consultoria Google Perfil"]
+  ];
+  $$(".services-submenu").forEach(submenu => {
+    const basePath = location.pathname.includes("/servicos/") ? "" : "servicos/";
+    serviceLinks.forEach(([path, label]) => {
+      const href = basePath ? `${basePath}${path.replace("servicos/", "")}` : path.replace("servicos/", "");
+      if (!submenu.querySelector(`a[href="${href}"]`)) {
+        const link = document.createElement("a");
+        link.href = href;
+        link.textContent = label;
+        submenu.append(link);
+      }
+    });
+  });
+
   /* ---------- 1. Header com fundo ao rolar ---------- */
   const header = $("#header");
   const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
@@ -54,9 +72,23 @@
   $$('.services-toggle').forEach(button => {
     button.addEventListener('click', () => {
       const item = button.closest('.nav-services');
+      $$('.nav-services.is-open').forEach(openItem => {
+        if (openItem !== item) {
+          openItem.classList.remove('is-open');
+          openItem.querySelector('.services-toggle').setAttribute('aria-expanded', 'false');
+        }
+      });
       const open = item.classList.toggle('is-open');
       button.setAttribute('aria-expanded', String(open));
     });
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.nav-services')) {
+      $$('.nav-services.is-open').forEach(item => {
+        item.classList.remove('is-open');
+        item.querySelector('.services-toggle').setAttribute('aria-expanded', 'false');
+      });
+    }
   });
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
