@@ -66,7 +66,7 @@ font-size:clamp(2rem,5.4vw,4.2rem);
 line-height:.96;letter-spacing:-.015em;text-transform:uppercase;
 display:grid;
 }
-.hero-title em{font-style:normal;color:var(--accent)}
+.hero-title em,.hero-title .accent,.hero-title .destaque,.hero-title span:not(.ht-line){font-style:normal;color:var(--accent)}
 .ht-line{display:block}
 .sec-title{
 font-weight:900;font-stretch:110%;
@@ -74,7 +74,7 @@ font-size:clamp(1.6rem,3.45vw,2.7rem);
 line-height:1;letter-spacing:-.01em;text-transform:uppercase;
 max-width:22ch;
 }
-.sec-title em{font-style:normal;color:var(--accent)}
+.sec-title em,.sec-title .accent,.sec-title .destaque,.sec-title span{font-style:normal;color:var(--accent)}
 
 /* ===== 4. BOTÕES ===== */
 .btn{
@@ -163,14 +163,14 @@ display:flex;flex-direction:column;gap:2rem;
 .menu-mobile[hidden]{display:none}
 .menu-mobile nav{display:flex;flex-direction:column}
 .menu-mobile nav .nav-services{width:100%;border-bottom:1px solid var(--line)}
-.menu-mobile .services-toggle{display:flex;width:100%;justify-content:space-between;align-items:center;padding:1rem 0;color:var(--text);font:900 clamp(2rem,9vw,3.2rem)/1.15 var(--font-sans);font-stretch:110%;text-transform:uppercase;text-align:left}
+.menu-mobile .services-toggle{display:flex;width:100%;justify-content:space-between;align-items:center;padding:1rem 0;color:var(--text);font:900 clamp(2rem,9vw,3.2rem)/1.15 var(--font-sans);font-stretch:110%;text-transform:uppercase;text-align:left;line-height:1.1}
 .menu-mobile .services-toggle::after{display:none}
 .menu-mobile .services-submenu{position:static;transform:none;min-width:0;padding:0 0 .7rem;display:none;border:0;border-radius:0;background:transparent;box-shadow:none}
 .menu-mobile .nav-services.is-open .services-submenu{display:block}
-.menu-mobile .services-submenu a{display:block!important;padding:.65rem 0 .65rem 1rem!important;border:0!important;font:700 1rem/1.4 var(--font-body)!important;letter-spacing:normal;text-transform:none;opacity:1!important;transform:none!important}
+.menu-mobile .services-submenu a{display:block!important;padding:.65rem 0 .65rem 1rem!important;border:0!important;font:700 1rem/1.4 var(--font-body)!important;letter-spacing:normal;text-transform:none;opacity:1!important;transform:none!important;line-height:1.4}
 .menu-mobile nav > a{
-font:900 clamp(2rem,9vw,3.2rem)/1.15 var(--font-sans);font-stretch:110%;text-transform:uppercase;
-padding:1rem 0;border-bottom:1px solid var(--line);
+display:block;font:900 clamp(2rem,9vw,3.2rem)/1.15 var(--font-sans);font-stretch:110%;text-transform:uppercase;
+padding:1rem 0;border-bottom:1px solid var(--line);line-height:1.1;
 opacity:0;transform:translateY(18px);
 transition:opacity .5s var(--ease),transform .5s var(--ease),color .25s;
 }
@@ -296,7 +296,7 @@ transition:background .3s;
 font:800 clamp(1.05rem,1.95vw,1.45rem)/1.15 var(--font-sans);font-stretch:108%;
 text-transform:uppercase;letter-spacing:-.01em;
 }
-.row-name em{font-style:normal;color:var(--accent)}
+.row-name em,.row-name .accent,.row-name .destaque,.row-name span:not(.row-name){font-style:normal;color:var(--accent)}
 .row-toggle{
 width:42px;height:42px;flex:none;border:1px solid var(--line-2);border-radius:50%;
 display:grid;place-items:center;transition:transform .4s var(--ease),background .3s,border-color .3s;
@@ -312,6 +312,8 @@ display:grid;place-items:center;transition:transform .4s var(--ease),background 
 .svc-txt p + p{margin-top:1rem}
 .svc-note{font-family:var(--font-body);font-size:.8rem;color:var(--accent);font-style:italic}
 .svc-col{display:flex;flex-direction:column;gap:1.6rem}
+.svc-col .btn + .btn{margin-top:-.6rem}
+.svc-actions{display:flex;flex-direction:column;gap:.75rem}
 .svc-list{display:grid;gap:.7rem}
 .svc-list li{display:flex;gap:.7rem;align-items:baseline;color:var(--muted)}
 .svc-list .ic{color:var(--accent);flex:none;transform:translateY(2px)}

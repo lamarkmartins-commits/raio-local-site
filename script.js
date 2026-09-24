@@ -20,12 +20,13 @@
 
   /* FAQ com o mesmo cabeçalho visual da home em todas as páginas. */
   $$(".faq-intro .sec-tag").forEach(el => { el.textContent = "04 · Dúvidas frequentes"; });
-  $$(".faq-intro .sec-title").forEach(el => { el.textContent = "Perguntas Frequentes (FAQ)"; });
+  $$(".faq-intro .sec-title").forEach(el => { el.innerHTML = 'Perguntas <span class="accent"><em>Frequentes</em></span> (FAQ)'; });
 
   const serviceLinks = [
     ["servicos/criacao-de-sites.html", "Criação de sites"],
     ["servicos/seo-local-google-mapas.html", "SEO Local e Google Maps"],
-    ["servicos/consultoria-google-perfil-da-empresa.html", "Consultoria Google Perfil"]
+    ["servicos/consultoria-google-perfil-da-empresa.html", "Consultoria Google Perfil"],
+    ["servicos/consultoria-em-usabilidade.html", "Consultoria em Usabilidade"]
   ];
   $$(".services-submenu").forEach(submenu => {
     const basePath = location.pathname.includes("/servicos/") ? "" : "servicos/";
