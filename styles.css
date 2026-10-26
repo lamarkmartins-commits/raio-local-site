@@ -109,7 +109,7 @@ border-bottom:1px solid transparent;
 .logo-mark .ic{width:16px;height:16px}
 .logo-text{font-weight:900;font-stretch:112%;letter-spacing:.02em;font-size:1.15rem}
 .logo-text em{font-style:normal;color:var(--accent)}
-.nav-desktop{justify-self:center;display:flex;gap:2rem}
+.nav-desktop{justify-self:center;display:flex;gap:clamp(.75rem,1.5vw,1.5rem)}
 .nav-services{position:relative}
 .services-toggle{
 display:inline-flex;align-items:center;gap:.35rem;padding:.3rem 0;
@@ -518,7 +518,7 @@ transition:max-width .45s var(--ease),padding .45s var(--ease);
 .quotes .quote:last-child{grid-column:1/-1}
 .foot-grid{grid-template-columns:1fr 1fr}
 }
-@media (max-width:900px){
+@media (max-width:980px){
 .header-inner{grid-template-columns:auto auto;justify-content:space-between}
 .nav-desktop{display:none}
 .menu-toggle{display:block}

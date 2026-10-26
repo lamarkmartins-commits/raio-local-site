@@ -29,10 +29,10 @@
     ["servicos/consultoria-em-usabilidade.html", "Consultoria em Usabilidade"]
   ];
   $$(".services-submenu").forEach(submenu => {
-    const basePath = location.pathname.includes("/servicos/") ? "" : "servicos/";
+    const servicesUrl = new URL("servicos/", $(".logo").href);
     serviceLinks.forEach(([path, label]) => {
-      const href = basePath ? `${basePath}${path.replace("servicos/", "")}` : path.replace("servicos/", "");
-      if (!submenu.querySelector(`a[href="${href}"]`)) {
+      const href = new URL(path.replace("servicos/", ""), servicesUrl).href;
+      if (!$$('a', submenu).some(link => link.href === href)) {
         const link = document.createElement("a");
         link.href = href;
         link.textContent = label;
