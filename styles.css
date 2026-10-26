@@ -142,6 +142,7 @@ background:var(--accent);transform:scaleX(0);transform-origin:right;transition:t
 }
 .nav-desktop a:hover{color:var(--text)}
 .nav-desktop a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-desktop a.nav-offer{color:var(--accent);font-weight:800;white-space:nowrap}
 .header-actions{display:flex;align-items:center;gap:1rem}
 
 .menu-toggle{display:none;width:44px;height:44px;position:relative}
@@ -158,7 +159,7 @@ transition:transform .35s var(--ease),top .35s var(--ease);
 .menu-mobile{
 position:fixed;inset:0;z-index:95;background:var(--bg);
 padding:calc(var(--header-h) + 2rem) 1.5rem 2rem;
-display:flex;flex-direction:column;gap:2rem;
+display:flex;flex-direction:column;gap:2rem;overflow-y:auto;
 }
 .menu-mobile[hidden]{display:none}
 .menu-mobile nav{display:flex;flex-direction:column}
@@ -175,6 +176,7 @@ opacity:0;transform:translateY(18px);
 transition:opacity .5s var(--ease),transform .5s var(--ease),color .25s;
 }
 .menu-mobile nav > a:hover{color:var(--accent)}
+.menu-mobile nav > a.nav-offer{color:var(--accent)}
 .menu-mobile.open nav > a{opacity:1;transform:none}
 .menu-foot{margin-top:auto;display:grid;gap:1rem}
 .menu-ig{display:inline-flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--muted)}
@@ -518,7 +520,7 @@ transition:max-width .45s var(--ease),padding .45s var(--ease);
 .quotes .quote:last-child{grid-column:1/-1}
 .foot-grid{grid-template-columns:1fr 1fr}
 }
-@media (max-width:980px){
+@media (max-width:1080px){
 .header-inner{grid-template-columns:auto auto;justify-content:space-between}
 .nav-desktop{display:none}
 .menu-toggle{display:block}
