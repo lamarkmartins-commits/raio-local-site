@@ -9,4 +9,6 @@ Para publicar outro artigo:
 3. Adicione o artigo ao índice `blog/index.html`, com um link que leve à nova pasta. Evite cards sem artigo publicado.
 4. Inclua a URL em `../sitemap.xml` e confira todos os links relativos.
 
-O menu principal e o rodapé das páginas atuais têm HTML próprio. Ao criar novas páginas fora do blog, inclua o link para `blog/` na navegação dessas páginas também.
+O menu principal e o rodapé das páginas atuais têm HTML próprio. Ao criar novas páginas fora do blog, inclua o link para `blog/index.html` na navegação dessas páginas também.
+
+Na hospedagem atual, `/blog/` é atendido por uma instalação WordPress e retorna 404, embora o arquivo estático `/blog/index.html` esteja publicado. Por isso, use sempre o caminho explícito `blog/index.html` nos links para a página inicial do blog e na URL canônica e no sitemap. Os links para os artigos podem continuar usando suas pastas, que respondem normalmente.
