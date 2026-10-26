@@ -23,10 +23,10 @@
   $$(".faq-intro .sec-title").forEach(el => { el.innerHTML = 'Perguntas <span class="accent"><em>Frequentes</em></span> (FAQ)'; });
 
   const serviceLinks = [
-    ["servicos/criacao-de-sites.html", "Criação de sites"],
-    ["servicos/seo-local-google-mapas.html", "SEO Local e Google Maps"],
-    ["servicos/consultoria-google-perfil-da-empresa.html", "Consultoria Google Perfil"],
-    ["servicos/consultoria-em-usabilidade.html", "Consultoria em Usabilidade"]
+    ["servicos/criacao-de-sites", "Criação de sites"],
+    ["servicos/seo-local-google-mapas", "SEO Local e Google Maps"],
+    ["servicos/consultoria-google-perfil-da-empresa", "Consultoria Google Perfil"],
+    ["servicos/consultoria-em-usabilidade", "Consultoria em Usabilidade"]
   ];
   $$(".services-submenu").forEach(submenu => {
     const servicesUrl = new URL("servicos/", $(".logo").href);
