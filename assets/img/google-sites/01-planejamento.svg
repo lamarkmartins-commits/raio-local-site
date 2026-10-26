@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Planejamento de um site</title><desc id="desc">Caderno com uma estrutura simples de página e itens de conteúdo organizados.</desc>
+  <rect width="1200" height="675" fill="#131519"/><circle cx="1020" cy="102" r="190" fill="#ff5a1f" opacity=".13"/><circle cx="139" cy="580" r="155" fill="#ff7a45" opacity=".08"/>
+  <text x="72" y="91" fill="#ff7a45" font-family="Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="4">PASSO 01 · PLANEJAR</text>
+  <text x="72" y="160" fill="#f4f3ee" font-family="Arial,sans-serif" font-size="46" font-weight="700">Comece pelo que as pessoas precisam saber</text>
+  <rect x="184" y="218" width="832" height="382" rx="24" fill="#f7f5f0"/><rect x="184" y="218" width="832" height="72" rx="24" fill="#e8e4dc"/><path d="M184 266h832v24H184z" fill="#e8e4dc"/>
+  <circle cx="225" cy="254" r="8" fill="#ff5a1f"/><circle cx="253" cy="254" r="8" fill="#c8c3ba"/><circle cx="281" cy="254" r="8" fill="#c8c3ba"/><text x="329" y="261" fill="#1c242b" font-family="Arial,sans-serif" font-size="18" font-weight="700">MAPA DO CONTEÚDO</text>
+  <rect x="226" y="318" width="290" height="72" rx="12" fill="#ff5a1f"/><text x="255" y="362" fill="#160b02" font-family="Arial,sans-serif" font-size="25" font-weight="700">Início · objetivo</text>
+  <rect x="552" y="318" width="420" height="72" rx="12" fill="#fff" stroke="#d5d1c8" stroke-width="2"/><text x="582" y="362" fill="#1c242b" font-family="Arial,sans-serif" font-size="25" font-weight="700">Sobre · quem somos</text>
+  <rect x="226" y="420" width="420" height="72" rx="12" fill="#fff" stroke="#d5d1c8" stroke-width="2"/><text x="255" y="464" fill="#1c242b" font-family="Arial,sans-serif" font-size="25" font-weight="700">Serviços · como ajudamos</text>
+  <rect x="682" y="420" width="290" height="72" rx="12" fill="#fff" stroke="#d5d1c8" stroke-width="2"/><text x="712" y="464" fill="#1c242b" font-family="Arial,sans-serif" font-size="25" font-weight="700">Contato · próximo passo</text>
+  <path d="M454 391v22m0 0h310m0 0v7M762 391v22" fill="none" stroke="#ff5a1f" stroke-width="4" stroke-linecap="round"/>
+  <text x="226" y="552" fill="#505960" font-family="Arial,sans-serif" font-size="19">Uma estrutura clara ajuda a transformar ideias em páginas úteis.</text>
+</svg>

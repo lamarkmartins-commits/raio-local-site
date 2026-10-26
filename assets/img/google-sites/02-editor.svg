@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Montagem de conteúdo para um site</title><desc id="desc">Ilustração conceitual de um editor visual com ferramentas de texto, imagem e botão ao lado de uma página.</desc>
+  <rect width="1200" height="675" fill="#131519"/><circle cx="1070" cy="568" r="190" fill="#ff5a1f" opacity=".1"/>
+  <text x="72" y="91" fill="#ff7a45" font-family="Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="4">PASSO 02 · MONTAR</text>
+  <text x="72" y="160" fill="#f4f3ee" font-family="Arial,sans-serif" font-size="46" font-weight="700">Combine blocos para contar sua história</text>
+  <rect x="108" y="215" width="984" height="390" rx="22" fill="#e9e6df"/>
+  <rect x="108" y="215" width="230" height="390" rx="22" fill="#fff"/><path d="M316 215h22v390h-22z" fill="#fff"/>
+  <text x="142" y="260" fill="#1c242b" font-family="Arial,sans-serif" font-size="20" font-weight="700">INSERIR</text>
+  <rect x="137" y="286" width="172" height="58" rx="10" fill="#f7f5f0"/><text x="159" y="322" fill="#1c242b" font-family="Arial,sans-serif" font-size="19">▤  Caixa de texto</text>
+  <rect x="137" y="356" width="172" height="58" rx="10" fill="#f7f5f0"/><text x="159" y="392" fill="#1c242b" font-family="Arial,sans-serif" font-size="19">▧  Imagem</text>
+  <rect x="137" y="426" width="172" height="58" rx="10" fill="#f7f5f0"/><text x="159" y="462" fill="#1c242b" font-family="Arial,sans-serif" font-size="19">▰  Botão</text>
+  <rect x="383" y="246" width="664" height="330" rx="14" fill="#fff"/><rect x="383" y="246" width="664" height="112" rx="14" fill="#ff5a1f"/><path d="M383 344h664v14H383z" fill="#ff5a1f"/>
+  <text x="424" y="292" fill="#160b02" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="2">PÁGINA INICIAL</text><text x="424" y="330" fill="#160b02" font-family="Arial,sans-serif" font-size="31" font-weight="700">Bem-vindo ao nosso espaço</text>
+  <rect x="424" y="384" width="245" height="132" rx="10" fill="#e9e6df"/><circle cx="547" cy="450" r="36" fill="#ff7a45" opacity=".8"/><path d="M502 481l34-39 26 25 20-18 31 37" fill="none" stroke="#1c242b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="700" y="388" width="290" height="17" rx="8" fill="#1c242b"/><rect x="700" y="420" width="270" height="12" rx="6" fill="#c8c3ba"/><rect x="700" y="444" width="280" height="12" rx="6" fill="#c8c3ba"/><rect x="700" y="483" width="145" height="42" rx="21" fill="#ff5a1f"/><text x="726" y="510" fill="#160b02" font-family="Arial,sans-serif" font-size="16" font-weight="700">SAIBA MAIS</text>
+  <text x="383" y="630" fill="#a3a7ad" font-family="Arial,sans-serif" font-size="17">Ilustração conceitual: a interface real pode ser diferente.</text>
+</svg>

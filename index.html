@@ -47,20 +47,7 @@
 
   <link rel="stylesheet" href="styles.css">
 
-  <!-- ================= GA4 + GTM =================
-       Descomente e substitua os IDs antes de publicar (ver README.md):
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-    var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;
-    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})
-    (window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-  -->
+
 
   <!-- ================= DADOS ESTRUTURADOS (JSON-LD) ================= -->
   <script type="application/ld+json">
@@ -199,6 +186,19 @@
   </script>
   <script src="theme.js"></script>
   <link rel="stylesheet" href="theme.css">
+  <!-- Google Analytics 4 -->
+  <script>
+    if (location.hostname === 'www.raiolocal.com' || location.hostname === 'raiolocal.com') {
+      var gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-7MY09NFVG7';
+      document.head.appendChild(gaScript);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments)}
+      gtag('js', new Date());
+      gtag('config', 'G-7MY09NFVG7');
+    }
+  </script>
 </head>
 
 <body id="topo">

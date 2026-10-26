@@ -129,6 +129,19 @@
 
   <script src="../theme.js?v=2"></script>
   <link rel="stylesheet" href="../theme.css">
+  <!-- Google Analytics 4 -->
+  <script>
+    if (location.hostname === 'www.raiolocal.com' || location.hostname === 'raiolocal.com') {
+      var gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-7MY09NFVG7';
+      document.head.appendChild(gaScript);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments)}
+      gtag('js', new Date());
+      gtag('config', 'G-7MY09NFVG7');
+    }
+  </script>
 </head>
 <body id="topo" class="service-page seo-page">
   <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
