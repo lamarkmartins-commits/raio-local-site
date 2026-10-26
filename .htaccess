@@ -1,0 +1,32 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Consolidate HTTP and non-canonical hosts on HTTPS and www.
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} !^www\.raiolocal\.com$ [NC]
+  RewriteRule ^ https://www.raiolocal.com%{REQUEST_URI} [R=301,L]
+
+  # Keep the homepage on its dedicated /inicio URL.
+  RewriteCond %{THE_REQUEST} \s/+index\.html(?:[?\s]) [NC]
+  RewriteRule ^index\.html$ /inicio [R=301,L]
+
+  RewriteRule ^$ /inicio [R=301,L]
+
+  # Remove index.html from subdirectory URLs.
+  RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html(?:[?\s]) [NC]
+  RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
+
+  # Redirect directly requested .html URLs to their clean equivalents.
+  RewriteCond %{THE_REQUEST} \s/+(.+)\.html(?:[?\s]) [NC]
+  RewriteRule ^(.+)\.html$ /$1 [R=301,L]
+
+  # Serve the homepage from its clean /inicio URL.
+  RewriteRule ^inicio/?$ index.html [L]
+
+  # Serve matching .html files for clean URLs without changing the browser URL.
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+</IfModule>
