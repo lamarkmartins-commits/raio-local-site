@@ -39,20 +39,23 @@
 
   applyTheme(savedTheme() || (systemTheme.matches ? "light" : "dark"));
 
-  document.addEventListener("DOMContentLoaded", () => {
+  const setupToggle = () => {
     const actions = document.querySelector(".header-actions");
     if (!actions) return;
 
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "theme-toggle";
-    const icon = document.createElement("span");
-    icon.className = "theme-toggle-icon";
-    icon.setAttribute("aria-hidden", "true");
-    const label = document.createElement("span");
-    label.className = "theme-toggle-text";
-    button.append(icon, label);
-    actions.insertBefore(button, actions.querySelector(".menu-toggle"));
+    let button = actions.querySelector(".theme-toggle");
+    if (!button) {
+      button = document.createElement("button");
+      button.type = "button";
+      button.className = "theme-toggle";
+      const icon = document.createElement("span");
+      icon.className = "theme-toggle-icon";
+      icon.setAttribute("aria-hidden", "true");
+      const label = document.createElement("span");
+      label.className = "theme-toggle-text";
+      button.append(icon, label);
+      actions.insertBefore(button, actions.querySelector(".menu-toggle"));
+    }
     applyTheme(root.dataset.theme);
 
     button.addEventListener("click", () => {
@@ -60,7 +63,13 @@
       try { localStorage.setItem(storageKey, theme); } catch { /* Preferência apenas nesta página. */ }
       applyTheme(theme);
     });
-  });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupToggle, { once: true });
+  } else {
+    setupToggle();
+  }
 
   systemTheme.addEventListener("change", () => {
     if (!savedTheme()) applyTheme(systemTheme.matches ? "light" : "dark");
