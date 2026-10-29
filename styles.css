@@ -144,6 +144,11 @@ background:var(--accent);transform:scaleX(0);transform-origin:right;transition:t
 .nav-desktop a:hover::after{transform:scaleX(1);transform-origin:left}
 .nav-desktop a.nav-offer{color:var(--accent);font-weight:800;white-space:nowrap}
 .header-actions{display:flex;align-items:center;gap:1rem}
+.header-instagram{display:grid;place-items:center;width:44px;height:44px;flex:none;border:1px solid var(--line-2);border-radius:50%;color:var(--text);transition:background .25s,border-color .25s,color .25s,transform .25s var(--ease)}
+.header-instagram:hover{background:var(--surface);border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.header-instagram svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.header-instagram .instagram-dot{fill:currentColor;stroke:none}
+.header-instagram img{width:20px;height:20px}
 
 .menu-toggle{display:none;width:44px;height:44px;position:relative}
 .menu-toggle span{
