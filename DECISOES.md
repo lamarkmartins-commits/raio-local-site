@@ -38,3 +38,29 @@ Para cada decisão, preencher:
 - **Impacto:** páginas locais passam a ter a tag para a próxima publicação do site. O artigo em avaliação mantém `noindex, nofollow` e segue fora do índice e sitemap.
 - **Referências:** ID de medição fornecido pelo responsável da conta GA4; artigo local `blog/criar-site-no-google-sites/index.html`.
 - **Verificação pendente:** após publicar, abrir o site no domínio canônico e confirmar a chegada de eventos/atividade em tempo real no GA4. Até lá, o aviso de coleta inativa é esperado.
+
+## 2026-10-27 — Preparar artigo local sobre domínio em sites feitos com IA
+
+- **Estado:** concluído localmente; não publicado
+- **Contexto:** explicar por que o endereço usado por um site feito com IA merece atenção, com linguagem didática para pequenos negócios.
+- **Decisão:** criar `blog/dominio-site-com-ia/index.html` com distinção entre domínio próprio e subdomínio de uma plataforma, recomendações de controle do endereço e verificação de HTTPS. Usar três fotografias servidas pelo Unsplash, cada uma com `alt`, legenda e crédito/link de origem.
+- **Precisão editorial:** deixar claro que subdomínio não é inseguro por definição, HTTPS não atesta a legitimidade do negócio, e domínio próprio não garante tráfego ou ranking. Endereço sem TLD, como `cliente.apptal`, é apenas exemplo incompleto.
+- **Impacto:** página em avaliação local, com `noindex, nofollow`, tag GA4 restrita ao domínio de produção e estilo próprio em `assets/css/artigo-dominio.css`. Não adicionar ao índice do blog nem ao sitemap antes da aprovação para publicação.
+- **Referências:** `SDD.md`; [Registro.br — Sobre domínios](https://registro.br/dominio/); [Registro.br — Registro de novos domínios](https://registro.br/ajuda/registro-de-novos-dominios/); [Cloudflare — Criar registros de subdomínio](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/); [The HTTPS-Only Standard](https://https.cio.gov/).
+- **Imagens:** Unsplash CDN; páginas/coleções de origem ligadas nas legendas do artigo.
+
+## 2026-10-27 — Incluir recomendação comercial da Hostinger no artigo de domínio
+
+- **Estado:** concluído localmente; artigo ainda não publicado
+- **Contexto:** apresentar a Hostinger como opção de domínio e hospedagem, conforme parceria comercial informada pela Raio Local.
+- **Decisão:** inserir parágrafo identificado como recomendação da Raio Local, informando a parceria comercial, o uso e a confiança baseada na experiência da empresa. Incluir links oficiais para domínio e hospedagem e orientar o leitor a comparar recursos, renovação e condições.
+- **Impacto:** `blog/dominio-site-com-ia/index.html`; sem inclusão no índice do blog ou sitemap.
+- **Referências:** páginas oficiais da [Hostinger sobre domínios](https://www.hostinger.com/br/registro-de-dominio) e [hospedagem de sites](https://www.hostinger.com/br/hospedagem-de-sites).
+
+## 2026-10-27 — Preparar artigo de domínio para publicação
+
+- **Estado:** preparado no repositório; publicação no domínio ainda depende do deploy
+- **Contexto:** solicitação para publicar o artigo sobre domínios em sites feitos com IA.
+- **Decisão:** tornar a página indexável, definir canonical e Open Graph, incluir BlogPosting e BreadcrumbList, adicionar cartão ao índice do blog e URL ao sitemap. Corrigir texto alternativo e legenda da imagem local da Frigomaster para identificar corretamente o case.
+- **Impacto:** `blog/dominio-site-com-ia/index.html`, `blog/blog.html` e `sitemap.xml`.
+- **Observação:** o repositório não contém fluxo de deploy nem credenciais de hospedagem. As alterações estão prontas localmente, mas não foram enviadas ao site ao vivo.

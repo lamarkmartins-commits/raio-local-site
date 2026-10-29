@@ -63,6 +63,15 @@ Cada página indexável nova ou alterada deve receber revisão própria:
 - Manter sitemap e `robots.txt` alinhados com páginas canônicas e indexáveis. Páginas de redirecionamento/duplicadas não devem ser adicionadas como conteúdo independente.
 - Conferir status/redirect, canonical, metadados e recursos relativos no endereço final de produção.
 
+### Google Analytics 4 (GA4)
+
+- Nas páginas reais de conteúdo, carregar uma única configuração GA4 com o ID de medição vigente da propriedade Raio Local (`G-7MY09NFVG7` no momento desta revisão). Não instalar duas tags Google na mesma página.
+- Restringir o carregamento ao domínio de produção (`raiolocal.com` e `www.raiolocal.com`), para evitar enviar pageviews de localhost, prévias e ambientes de desenvolvimento à propriedade de produção.
+- Não adicionar a tag a páginas técnicas de verificação, redirecionamentos legados ou documentos que não representem uma visita de conteúdo.
+- Antes de inserir ou alterar a tag, procurar configurações existentes de `gtag.js`, `GTM-*`, `dataLayer` e plugins para evitar contagem duplicada. Usar GA4 diretamente ou via GTM conforme decisão registrada; não manter os dois caminhos ativos para o mesmo ID sem plano explícito de deduplicação.
+- Após publicar, validar atividade no GA4 em tempo real e confirmar que a coleta funciona no domínio canônico. O aviso de stream inativo antes da publicação ou validação é esperado.
+- Se o ID da propriedade mudar, atualizar as páginas afetadas, este SDD e registrar a mudança em `DECISOES.md`.
+
 ### Fluxo de publicação de artigo
 
 Seguir também `blog/README.md`: criar pasta com slug, preencher metadados e conteúdo, adicionar ao índice `blog/blog.html`, atualizar `sitemap.xml` e conferir links relativos. Na hospedagem atual, `/blog/` tem comportamento legado/404 descrito no README; usar o endereço explícito `blog/blog.html` para o índice até que uma decisão e uma alteração de hospedagem mudem essa regra.
@@ -100,6 +109,7 @@ Registrar decisões duradouras em [DECISOES.md](DECISOES.md), com data, contexto
 - [ ] Logo e cores corretos para o fundo; contraste e foco revisados.
 - [ ] Title, description, canonical, Open Graph e headings próprios da página.
 - [ ] Dados estruturados, sitemap e robots revisados quando aplicável.
+- [ ] GA4 presente uma única vez nas páginas de conteúdo, restrito ao domínio de produção e validado após publicação.
 - [ ] URL segue padrão; links relativos funcionam na profundidade publicada.
 - [ ] Texto segue tom de voz e fatos verificáveis.
 - [ ] Decisão relevante registrada em `DECISOES.md`.
