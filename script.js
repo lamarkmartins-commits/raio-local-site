@@ -17,6 +17,40 @@
   const $  = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isProductionHost = ["www.raiolocal.com", "raiolocal.com"].includes(location.hostname);
+
+  if (isProductionHost) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function(){window.dataLayer.push(arguments)};
+    window.gtag("config", "AW-17944688720");
+    window.gtag_report_conversion = function(url) {
+      const callback = () => {
+        if (typeof url === "string") window.location = url;
+      };
+      window.gtag("event", "ads_conversion_PAGE_VIEW_1", {});
+      window.gtag("event", "conversion", {
+        send_to: "AW-17944688720/KwR6COqX_4kcENDw2OxC",
+        event_callback: callback,
+        event_timeout: 2000
+      });
+      return false;
+    };
+    window.gtag_report_conversion();
+  }
+
+  document.addEventListener("click", event => {
+    const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+    if (!link || new URL(link.href, location.href).hostname !== "wa.me" ||
+        typeof window.gtag_report_conversion !== "function") return;
+
+    if (link.target === "_blank") {
+      window.gtag_report_conversion();
+      return;
+    }
+
+    event.preventDefault();
+    window.gtag_report_conversion(link.href);
+  });
 
   /* FAQ com o mesmo cabeçalho visual da home em todas as páginas. */
   $$(".faq-intro .sec-tag").forEach(el => { el.textContent = "04 · Dúvidas frequentes"; });
@@ -245,6 +279,9 @@
 
       const url = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(buildMessage(data))}`;
       $("#wa-fallback").href = url;
+      if (typeof window.gtag_report_conversion === "function") {
+        window.gtag_report_conversion();
+      }
       window.open(url, "_blank", "noopener");
       form.hidden = true;
       success.hidden = false;
