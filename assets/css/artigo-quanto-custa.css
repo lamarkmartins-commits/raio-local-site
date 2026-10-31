@@ -1,0 +1,8 @@
+.blog-prose .article-figure{margin:2rem 0}
+.blog-prose .article-figure img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:var(--radius-sm)}
+.blog-prose .article-figure figcaption{margin-top:.65rem;color:var(--muted);font-size:.85rem;line-height:1.5}
+.blog-prose .article-table-wrap{max-width:100%;overflow-x:auto;margin:1.5rem 0 1.8rem}
+.blog-prose table{width:100%;min-width:550px;border-collapse:collapse;font-size:.94rem;line-height:1.5}
+.blog-prose th,.blog-prose td{padding:.85rem 1rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.blog-prose th{background:var(--surface);color:var(--text);font-weight:800}
+.blog-prose td{color:var(--muted)}
