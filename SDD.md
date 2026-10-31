@@ -2,7 +2,7 @@
 
 **Status:** versão inicial, baseada no site existente  
 **Escopo:** site institucional, páginas de serviços e blog estático  
-**Atualizado em:** 2026-10-26
+**Atualizado em:** 2026-10-30
 
 Este documento define critérios para novas páginas e alterações. Quando o estado atual do site divergir do padrão descrito, registrar a divergência no [registro de decisões](DECISOES.md) e planejar a correção; este documento não implica uma migração automática de todas as páginas.
 
@@ -76,6 +76,14 @@ Cada página indexável nova ou alterada deve receber revisão própria:
 
 Seguir também `blog/README.md`: criar pasta com slug, preencher metadados e conteúdo, adicionar ao índice `blog/blog.html`, atualizar `sitemap.xml` e conferir links relativos. Na hospedagem atual, `/blog/` tem comportamento legado/404 descrito no README; usar o endereço explícito `blog/blog.html` para o índice até que uma decisão e uma alteração de hospedagem mudem essa regra.
 
+### Largura e responsividade dos artigos
+
+- Manter o artigo dentro da largura do container compartilhado, sem scroll horizontal na página, especialmente em telas de 320 px a 390 px.
+- Em artigos com tabelas, imagens ou outros elementos largos, garantir que a coluna de conteúdo do grid possa encolher (`min-width: 0` e, quando necessário, `minmax(0, 1fr)`). Não definir largura mínima maior que a área de leitura disponível no mobile.
+- Tabelas de poucas colunas devem ocupar a largura disponível, com texto quebrável e células legíveis. Conferir o resultado em telas estreitas, em vez de depender de `overflow-x: auto` para a leitura normal.
+- Imagens e figuras devem respeitar `max-width: 100%` do conteúdo, sem ampliar a página além da viewport.
+- Antes de publicar um artigo, verificar no desktop e no mobile que a largura rolável do documento não ultrapassa a viewport e que o layout segue o padrão dos demais artigos.
+
 ## 5. Padrão técnico de URLs
 
 - URL pública canônica usa HTTPS e host `www.raiolocal.com` conforme `.htaccess`.
@@ -112,4 +120,5 @@ Registrar decisões duradouras em [DECISOES.md](DECISOES.md), com data, contexto
 - [ ] GA4 presente uma única vez nas páginas de conteúdo, restrito ao domínio de produção e validado após publicação.
 - [ ] URL segue padrão; links relativos funcionam na profundidade publicada.
 - [ ] Texto segue tom de voz e fatos verificáveis.
+- [ ] Artigo sem scroll horizontal em telas mobile; tabelas, imagens e coluna de conteúdo cabem na viewport.
 - [ ] Decisão relevante registrada em `DECISOES.md`.
