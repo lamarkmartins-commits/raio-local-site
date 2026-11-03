@@ -1,6 +1,6 @@
 # SDD — Padrões do site Raio Local
 
-**Status:** versão inicial, baseada no site existente  
+**Status:** versão 1.1.2, baseada no site existente
 **Escopo:** site institucional, páginas de serviços e blog estático  
 **Atualizado em:** 2026-10-30
 
@@ -74,7 +74,7 @@ Cada página indexável nova ou alterada deve receber revisão própria:
 
 ### Fluxo de publicação de artigo
 
-Seguir também `blog/README.md`: criar pasta com slug, preencher metadados e conteúdo, adicionar ao índice `blog/blog.html`, atualizar `sitemap.xml` e conferir links relativos. Na hospedagem atual, `/blog/` tem comportamento legado/404 descrito no README; usar o endereço explícito `blog/blog.html` para o índice até que uma decisão e uma alteração de hospedagem mudem essa regra.
+Seguir também `blog/README.md`. Para o piloto e a listagem, editar as fontes em `content/` e executar `npm run build`; o índice e o sitemap são gerados. Os demais artigos ainda usam HTML direto. O índice usa `/blog/` como URL pública.
 
 ### Largura e responsividade dos artigos
 
@@ -92,7 +92,7 @@ Seguir também `blog/README.md`: criar pasta com slug, preencher metadados e con
 - Artigos ficam em `blog/<slug>/index.html` e usam URL de diretório `/blog/<slug>/`, conforme padrão publicado.
 - A página inicial tem URL pública `/inicio`; não criar canonical apontando para `/` sem rever o comportamento de redirecionamento atual.
 - Atualizar links internos, canonical, sitemap, dados estruturados e compartilhamento social quando uma URL for criada ou alterada. URL já publicada não deve ser renomeada sem redirecionamento 301 e revisão de referências.
-- Atenção: o endereço do índice do blog tem exceção documentada em `blog/README.md`; respeitá-la até alteração deliberada da hospedagem.
+- O índice do blog usa `/blog/`; a antiga URL `/blog/blog` deve redirecionar com código 301.
 
 ## 6. Registro e preservação de decisões
 

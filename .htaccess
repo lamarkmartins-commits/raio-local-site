@@ -13,6 +13,9 @@
 
   RewriteRule ^$ /inicio [R=301,L]
 
+  # Retire the former blog index URL; /blog/ is served by blog/index.html.
+  RewriteRule ^blog/blog(?:\.html)?/?$ /blog/ [R=301,L,NC]
+
   # Remove index.html from subdirectory URLs.
   RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html(?:[?\s]) [NC]
   RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]

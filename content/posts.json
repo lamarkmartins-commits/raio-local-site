@@ -1,0 +1,88 @@
+[
+  {
+    "slug": "como-site-ajuda-negocio-2027",
+    "title": "Como um site pode ajudar meu negócio em 2027?",
+    "summary": "Dados brasileiros, dicas para contratar uma agência e o papel do site nas buscas com IA.",
+    "category": "Criação de sites",
+    "datePublished": "2026-11-03",
+    "order": 0,
+    "published": true,
+    "featureArt": {
+      "query": "site para meu negócio",
+      "caption": "Um site com propósito",
+      "note": "Negócios locais · 2027"
+    }
+  },
+  {
+    "slug": "google-maps-destacar-empresa",
+    "title": "Google Maps: como destacar sua empresa da concorrência",
+    "summary": "Entenda os critérios da busca local e veja como cuidar das avaliações e dos dados da sua empresa.",
+    "category": "SEO Local",
+    "datePublished": "2026-11-01",
+    "order": 1,
+    "published": true
+  },
+  {
+    "slug": "quanto-custa-um-site-em-joao-pessoa",
+    "title": "Quanto custa um site em João Pessoa? Saiba como investir",
+    "summary": "Veja o que influencia o preço, quais custos considerar e como comparar propostas de criação de sites.",
+    "category": "Criação de sites",
+    "datePublished": "2026-10-30",
+    "order": 2,
+    "published": true
+  },
+  {
+    "slug": "o-que-e-trafego-pago",
+    "title": "O que é tráfego pago? Entenda como funciona",
+    "summary": "Veja como funcionam os anúncios online, o orçamento e o papel do gestor de tráfego pago.",
+    "category": "Marketing digital",
+    "datePublished": "2026-10-28",
+    "order": 3,
+    "published": true
+  },
+  {
+    "slug": "dominio-site-com-ia",
+    "title": "Vai criar um site com IA? Fique atento ao domínio",
+    "summary": "Entenda a diferença entre domínio próprio e subdomínio, e veja o que conferir sobre controle, confiança e segurança.",
+    "category": "Presença digital",
+    "datePublished": "2026-10-28",
+    "order": 4,
+    "published": true
+  },
+  {
+    "slug": "site-encontrado-google-ia-generativa",
+    "title": "Como um site ajuda sua empresa a ser encontrada no Google e nas IAs?",
+    "summary": "Veja como páginas claras e acessíveis apoiam a descoberta do negócio na busca tradicional e nas experiências com IA generativa.",
+    "category": "Busca e IA",
+    "datePublished": "2026-10-25",
+    "order": 5,
+    "published": true
+  },
+  {
+    "slug": "importancia-site-negocios-locais-2026",
+    "title": "Por que um site importa para negócios locais em 2026?",
+    "summary": "Entenda como um endereço próprio complementa o mapa e as redes sociais, esclarece dúvidas e facilita o contato.",
+    "category": "Criação de sites",
+    "datePublished": "2026-10-25",
+    "order": 6,
+    "published": true
+  },
+  {
+    "slug": "site-alem-das-redes-sociais",
+    "title": "Não dependa apenas das redes sociais: use um site para potencializar sua presença online",
+    "summary": "Descubra como organizar seus serviços, responder dúvidas e transformar o interesse gerado nas redes em contato.",
+    "category": "Presença digital",
+    "datePublished": "2026-10-25",
+    "order": 7,
+    "published": true
+  },
+  {
+    "slug": "seo-local-por-onde-comecar",
+    "title": "SEO Local: por onde começar para aparecer no Google Maps?",
+    "summary": "Entenda os fatores da busca local e organize as informações que ajudam clientes próximos a encontrar sua empresa.",
+    "category": "SEO Local",
+    "datePublished": "2026-10-25",
+    "order": 8,
+    "published": true
+  }
+]

@@ -71,3 +71,20 @@ Para cada decisão, preencher:
 - **Contexto:** solicitação para retirar `criar-site-no-google-sites` do projeto.
 - **Decisão:** excluir o artigo, sua folha de estilo exclusiva e as três ilustrações usadas apenas nele. Esta decisão substitui a preparação registrada em 2026-10-26.
 - **Impacto:** `blog/criar-site-no-google-sites/`, `assets/css/artigo-google-sites.css` e `assets/img/google-sites/`. O artigo já não constava do índice público nem do sitemap.
+
+## 2026-11-03 - Versionar a geração estática do blog (v1.1.0)
+
+- **Estado:** concluída localmente; publicação depende do deploy.
+- **Contexto:** cabeçalho, rodapé, metadados e cards eram mantidos manualmente em HTML. O índice podia ficar fora de ordem ou omitir uma URL do sitemap.
+- **Decisão:** usar um gerador Node sem dependências. `content/posts.json` é a fonte da listagem; `content/site-pages.json` reúne URLs fora dos artigos; `content/o-que-e-trafego-pago.json` e `content/o-que-e-trafego-pago.html` são as fontes do piloto. Templates e partes de cabeçalho e rodapé ficam em `templates/`. `npm run build` atualiza os HTMLs publicados e o sitemap; `npm run check` verifica se estão sincronizados.
+- **Impacto:** `blog/blog.html`, `blog/o-que-e-trafego-pago/index.html` e `sitemap.xml` passam a ser saídas geradas. Os demais artigos permanecem editados diretamente até serem migrados. URLs públicas, canonical e visual do piloto são preservados.
+- **Exceção de URL:** o índice está fisicamente em `blog/blog.html`; a regra de URL limpa de `.htaccess` transforma esse nome em `/blog/blog`. O caminho `/blog/` conflita com uma instalação WordPress na hospedagem atual, conforme `blog/README.md`. Uma troca para `/blog/` exige verificar ou remover essa rota no servidor, implantar um redirecionamento 301 de `/blog/blog` e atualizar links, canonical, dados estruturados e sitemap.
+- **Referências:** `SDD.md`, `blog/README.md`, `CHANGELOG.md` e `.htaccess`.
+
+## 2026-11-03 - Adotar /blog/ como URL do índice (v1.1.1)
+
+- **Estado:** concluída localmente; validação no domínio após deploy.
+- **Contexto:** o responsável informou que a instalação WordPress associada ao caminho antigo foi removida. A exceção de hospedagem registrada na versão 1.1.0 deixou de ser necessária.
+- **Decisão:** gerar o índice em `blog/index.html`, usar `https://www.raiolocal.com/blog/` como URL canônica e configurar redirecionamento 301 de `/blog/blog` e `/blog/blog.html`. Manter `blog/blog.html` como fallback de redirecionamento caso a regra Apache não seja aplicada.
+- **Impacto:** links internos, canonical, Open Graph, dados estruturados e sitemap passam a apontar para `/blog/`. A decisão anterior sobre manter `/blog/blog` fica substituída.
+- **Referências:** informação do responsável, `.htaccess`, `scripts/build-blog.mjs`, `blog/README.md` e `CHANGELOG.md`.

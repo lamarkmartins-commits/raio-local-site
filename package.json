@@ -1,0 +1,11 @@
+{
+  "name": "raio-local-site",
+  "private": true,
+  "version": "1.1.2",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-blog.mjs",
+    "check": "node scripts/build-blog.mjs --check",
+    "audit": "node scripts/check-site.mjs"
+  }
+}
