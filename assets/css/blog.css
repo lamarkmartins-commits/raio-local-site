@@ -95,6 +95,9 @@
 .blog-prose ul{list-style:disc}
 .blog-prose ol{list-style:decimal}
 .blog-prose li{padding-left:.25rem;margin-bottom:.6rem}
+.blog-article-figure{margin:2rem 0 2.5rem}
+.blog-article-figure img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:12px}
+.blog-article-figure figcaption{margin-top:.65rem;color:var(--muted);font-size:.82rem;line-height:1.5}
 .blog-callout{margin:2.3rem 0;padding:1.4rem 1.6rem;border-left:4px solid var(--accent);background:var(--surface);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
 .blog-callout strong{display:block;margin-bottom:.35rem;font:800 1rem var(--font-sans)}
 .blog-callout p{margin:0}
