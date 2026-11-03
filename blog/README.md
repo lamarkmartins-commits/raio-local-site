@@ -5,8 +5,8 @@ O blog é estático e usa `../styles.css`, `../theme.css` e `../assets/css/blog.
 Para publicar outro artigo:
 
 1. Crie uma pasta com um slug curto e copie a estrutura de `seo-local-por-onde-comecar/index.html`.
-2. Atualize título, descrição, URL canônica, Open Graph, dados estruturados, breadcrumb e conteúdo. Acrescente data de publicação apenas quando houver uma data real de publicação.
-3. Adicione o artigo ao índice `blog/blog.html`, com um link que leve à nova pasta. Evite cards sem artigo publicado.
+2. Atualize título, descrição, URL canônica, Open Graph, dados estruturados, breadcrumb e conteúdo. Acrescente data de publicação apenas quando houver uma data real de publicação. Preencha a etiqueta "Última atualização" junto ao autor e mantenha o `dateModified` do BlogPosting com a mesma data, alterando ambos quando o conteúdo for revisado.
+3. Adicione o artigo ao índice `blog/blog.html`, com um link que leve à nova pasta, e mantenha os artigos em ordem de publicação, do mais recente para o mais antigo. Evite cards sem artigo publicado.
 4. Inclua a URL em `../sitemap.xml` e confira todos os links relativos.
 
 O menu principal e o rodapé das páginas atuais têm HTML próprio. Ao criar novas páginas fora do blog, inclua o link para `blog/blog.html` na navegação dessas páginas também.

@@ -76,6 +76,8 @@
 .blog-article-hero .blog-hero-lead{max-width:62ch}
 .blog-article-meta{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;align-items:center;margin-top:1.8rem;color:var(--muted);font-size:.82rem}
 .blog-article-meta strong{color:var(--text)}
+.blog-updated-tag{display:inline-flex;align-items:center;gap:.3rem;font-weight:700}
+.blog-updated-tag time{font-weight:400}
 .blog-article-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(2.5rem,7vw,7rem);padding:clamp(3rem,6vw,5rem) 0}
 .blog-toc{position:sticky;top:calc(var(--header-h) + 2rem);align-self:start;border-top:2px solid var(--accent);padding-top:1rem}
 .blog-toc h2{font:800 .75rem var(--font-body);text-transform:uppercase;letter-spacing:.13em}

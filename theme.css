@@ -1,5 +1,6 @@
 /* Controles e cores compartilhados por todas as páginas. */
 :root{color-scheme:dark}
+html:not([data-theme="light"]) .header-instagram img{filter:invert(1)}
 .theme-toggle{
   display:inline-flex;align-items:center;justify-content:center;gap:.45rem;
   min-height:44px;padding:.45rem .7rem;border:1px solid var(--line-2);
