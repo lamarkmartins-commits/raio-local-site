@@ -64,3 +64,10 @@ Para cada decisão, preencher:
 - **Decisão:** tornar a página indexável, definir canonical e Open Graph, incluir BlogPosting e BreadcrumbList, adicionar cartão ao índice do blog e URL ao sitemap. Corrigir texto alternativo e legenda da imagem local da Frigomaster para identificar corretamente o case.
 - **Impacto:** `blog/dominio-site-com-ia/index.html`, `blog/blog.html` e `sitemap.xml`.
 - **Observação:** o repositório não contém fluxo de deploy nem credenciais de hospedagem. As alterações estão prontas localmente, mas não foram enviadas ao site ao vivo.
+
+## 2026-11-03 - Remover artigo local sobre Google Sites
+
+- **Estado:** concluído
+- **Contexto:** solicitação para retirar `criar-site-no-google-sites` do projeto.
+- **Decisão:** excluir o artigo, sua folha de estilo exclusiva e as três ilustrações usadas apenas nele. Esta decisão substitui a preparação registrada em 2026-10-26.
+- **Impacto:** `blog/criar-site-no-google-sites/`, `assets/css/artigo-google-sites.css` e `assets/img/google-sites/`. O artigo já não constava do índice público nem do sitemap.
