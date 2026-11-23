@@ -18,7 +18,15 @@
   RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html(?:[?\s]) [NC]
   RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
 
+  # Redirect duplicate service URLs to their canonical clean URLs.
+  RewriteRule ^servicos/criacao-de-sites\.html$ /servicos/criacao-de-sites [R=301,L,NC]
+  RewriteRule ^servicos/seo-local-google-mapas\.html$ /servicos/seo-local-google-mapas [R=301,L,NC]
+  RewriteRule ^servicos/consultoria-google-perfil-da-empresa\.html$ /servicos/consultoria-google-perfil-da-empresa [R=301,L,NC]
+  RewriteRule ^servicos/consultoria-em-usabilidade\.html$ /servicos/consultoria-em-usabilidade [R=301,L,NC]
+  RewriteRule ^servicos/site-de-pagina-unica\.html$ /servicos/site-de-pagina-unica [R=301,L,NC]
+
   # Redirect directly requested .html URLs to their clean equivalents.
+  RewriteCond %{THE_REQUEST} !\s/+google952e12c1b55f290e\.html(?:[?\s]) [NC]
   RewriteCond %{THE_REQUEST} \s/+(.+)\.html(?:[?\s]) [NC]
   RewriteRule ^(.+)\.html$ /$1 [R=301,L]
 

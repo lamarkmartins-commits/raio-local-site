@@ -26,6 +26,11 @@ function publicUrl(file) {
 function targetFile(pathname) {
   const decoded = decodeURIComponent(pathname);
   if (decoded === '/' || decoded === '/inicio' || decoded === '/inicio/' || decoded === '/index' || decoded === '/index/' || decoded === '/index.html') return 'index.html';
+  if (decoded === '/servicos/criacao-de-sites.html') return 'servicos/criacao-de-sites.html';
+  if (decoded === '/servicos/seo-local-google-mapas.html') return 'servicos/seo-local-google-mapas.html';
+  if (decoded === '/servicos/consultoria-google-perfil-da-empresa.html') return 'servicos/consultoria-google-perfil-da-empresa.html';
+  if (decoded === '/servicos/consultoria-em-usabilidade.html') return 'servicos/consultoria-em-usabilidade.html';
+  if (decoded === '/servicos/site-de-pagina-unica.html') return 'servicos/site-de-pagina-unica.html';
   if (decoded.endsWith('/')) return decoded.slice(1) + 'index.html';
   if (decoded === '/blog/blog') return 'blog/blog.html';
   return decoded.slice(1) + (decoded.endsWith('.html') || decoded.includes('.', decoded.lastIndexOf('/')) ? '' : '.html');
