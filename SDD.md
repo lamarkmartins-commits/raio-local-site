@@ -89,8 +89,8 @@ Seguir também `blog/README.md`. Para o piloto e a listagem, editar as fontes em
 - URL pública canônica usa HTTPS e host `www.raiolocal.com` conforme `.htaccess`.
 - Preferir caminhos curtos, descritivos, em minúsculas, sem acentos, com palavras separadas por hífen e sem parâmetros desnecessários.
 - Novas páginas de serviço ficam em `servicos/<slug>.html` no disco e devem ser acessíveis pela URL limpa `/servicos/<slug>`; o `.htaccess` já redireciona `.html` e resolve caminhos limpos para arquivos existentes.
-- Artigos ficam em `blog/<slug>/index.html` e usam URL de diretório `/blog/<slug>/`, conforme padrão publicado.
-- A página inicial tem URL pública `/inicio`; não criar canonical apontando para `/` sem rever o comportamento de redirecionamento atual.
+- Artigos ficam em `blog/<slug>/` e usam URL de diretório `/blog/<slug>/`, conforme padrão publicado.
+- A página inicial tem URL pública `/`; não criar canonical apontando para `/` sem rever o comportamento de redirecionamento atual.
 - Atualizar links internos, canonical, sitemap, dados estruturados e compartilhamento social quando uma URL for criada ou alterada. URL já publicada não deve ser renomeada sem redirecionamento 301 e revisão de referências.
 - O índice do blog usa `/blog/`; a antiga URL `/blog/blog` deve redirecionar com código 301.
 

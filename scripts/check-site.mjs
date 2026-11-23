@@ -17,7 +17,7 @@ async function* htmlFiles(directory) {
 
 function publicUrl(file) {
   const path = file.replaceAll('\\', '/');
-  if (path === 'index.html') return '/inicio';
+  if (path === 'index.html') return '/';
   if (path === 'blog/index.html') return '/blog/';
   if (path.endsWith('/index.html')) return '/' + path.slice(0, -'index.html'.length);
   return '/' + path.slice(0, -'.html'.length);
@@ -25,7 +25,7 @@ function publicUrl(file) {
 
 function targetFile(pathname) {
   const decoded = decodeURIComponent(pathname);
-  if (decoded === '/' || decoded === '/inicio' || decoded === '/inicio/') return 'index.html';
+  if (decoded === '/' || decoded === '/inicio' || decoded === '/inicio/' || decoded === '/index' || decoded === '/index/' || decoded === '/index.html') return 'index.html';
   if (decoded.endsWith('/')) return decoded.slice(1) + 'index.html';
   if (decoded === '/blog/blog') return 'blog/blog.html';
   return decoded.slice(1) + (decoded.endsWith('.html') || decoded.includes('.', decoded.lastIndexOf('/')) ? '' : '.html');

@@ -7,7 +7,7 @@
 
 ## 1.1.1 — 2026-11-03
 
-- Publica o índice do blog em `/blog/` por meio de `blog/index.html`.
+- Publica o índice do blog em `/blog/` por meio de `blog/`.
 - Redireciona `/blog/blog` e `/blog/blog.html` permanentemente para o novo endereço.
 - Atualiza links, canonical, Open Graph, dados estruturados, sitemap e gerador.
 
