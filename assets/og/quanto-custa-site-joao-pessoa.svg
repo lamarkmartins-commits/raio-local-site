@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
+  <rect width="1200" height="630" fill="#0b0c0e"/>
+  <rect x="70" y="70" width="1060" height="490" rx="24" fill="#16181d" stroke="#ff5e31" stroke-width="3"/>
+  <text x="120" y="180" fill="#ff5e31" font-family="Arial, sans-serif" font-size="34" font-weight="700">GUIA DE INVESTIMENTO</text>
+  <text x="120" y="300" fill="#ffffff" font-family="Arial, sans-serif" font-size="64" font-weight="700">Quanto custa um</text>
+  <text x="120" y="375" fill="#ffffff" font-family="Arial, sans-serif" font-size="64" font-weight="700">site em João Pessoa?</text>
+  <text x="120" y="465" fill="#c6c9d1" font-family="Arial, sans-serif" font-size="30">Preços, fatores e como comparar propostas</text>
+  <text x="120" y="520" fill="#ff5e31" font-family="Arial, sans-serif" font-size="28" font-weight="700">RAIO LOCAL</text>
+</svg>

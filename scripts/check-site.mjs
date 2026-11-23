@@ -26,11 +26,13 @@ function publicUrl(file) {
 function targetFile(pathname) {
   const decoded = decodeURIComponent(pathname);
   if (decoded === '/' || decoded === '/inicio' || decoded === '/inicio/' || decoded === '/index' || decoded === '/index/' || decoded === '/index.html') return 'index.html';
+  if (/^\/servicos\/(criacao-de-sites|seo-local-google-mapas|consultoria-google-perfil-da-empresa|consultoria-em-usabilidade|site-de-pagina-unica)\/?$/.test(decoded)) return `servicos/${decoded.split('/')[2]}.html`;
   if (decoded === '/servicos/criacao-de-sites.html') return 'servicos/criacao-de-sites.html';
   if (decoded === '/servicos/seo-local-google-mapas.html') return 'servicos/seo-local-google-mapas.html';
   if (decoded === '/servicos/consultoria-google-perfil-da-empresa.html') return 'servicos/consultoria-google-perfil-da-empresa.html';
   if (decoded === '/servicos/consultoria-em-usabilidade.html') return 'servicos/consultoria-em-usabilidade.html';
   if (decoded === '/servicos/site-de-pagina-unica.html') return 'servicos/site-de-pagina-unica.html';
+  if (/^\/blog\/[a-z0-9-]+\/?$/.test(decoded)) return `blog/${decoded.split('/')[2]}/index.html`;
   if (decoded.endsWith('/')) return decoded.slice(1) + 'index.html';
   if (decoded === '/blog/blog') return 'blog/blog.html';
   return decoded.slice(1) + (decoded.endsWith('.html') || decoded.includes('.', decoded.lastIndexOf('/')) ? '' : '.html');
@@ -56,6 +58,9 @@ for (const [file, html] of pages) {
   const title = html.match(/<title>([\s\S]*?)<\/title>/)?.[1]?.trim();
   const description = html.match(/<meta\s+name="description"\s+content="([^"]*)"/)?.[1];
   const h1Count = [...html.matchAll(/<h1\b/gi)].length;
+  if (!/<html[^>]*\blang="pt-BR"/i.test(html)) errors.push(`${file}: html lang não é pt-BR`);
+  if (/meta[^>]+name=["'](?:geo\.|ICBM)/i.test(html)) errors.push(`${file}: meta geo/ICBM presente`);
+  if (/(?:^|\s)git(?:\s|$|<)/i.test(html)) errors.push(`${file}: texto solto "git" encontrado`);
   if (!redirect && !title) errors.push(`${file}: title ausente`);
   if (!redirect && !description) errors.push(`${file}: meta description ausente`);
   if (!redirect && h1Count !== 1) warnings.push(`${file}: ${h1Count} elementos H1`);
@@ -64,6 +69,9 @@ for (const [file, html] of pages) {
   }
   if (/(?:href=["'](?:\.\/)?blog\/?|href=["']\/blog\/blog(?:\.html)?\/?)["']/i.test(html)) {
     errors.push(`${file}: link gera ou aponta para /blog/blog`);
+  }
+  if (/\/(?:index(?:\.html)?|inicio)(?:[/?#"'<]|$)|href=["']#servicos["']/i.test(html)) {
+    errors.push(`${file}: link interno não padronizado`);
   }
   if (!canonical) errors.push(`${file}: canonical ausente`);
   else if (!redirect && canonical !== base.href) errors.push(`${file}: canonical ${canonical} difere de ${base.href}`);
@@ -76,14 +84,33 @@ for (const [file, html] of pages) {
     }
   }
   if (html.includes('\uFFFD')) errors.push(`${file}: caractere de substituição Unicode encontrado`);
+  for (const imageTag of html.matchAll(/<img\b[^>]*>/gi)) {
+    const attrs = attributes(imageTag[0]);
+    if (!attrs.width || !attrs.height) warnings.push(`${file}: imagem sem width/height: ${attrs.src || '?'}`);
+  }
+  if (/"aggregateRating"\s*:/.test(html)) {
+    errors.push(`${file}: aggregateRating presente em dados estruturados`);
+  }
 
   for (const script of html.matchAll(/<script\s+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)) {
     try {
       const data = JSON.parse(script[1]);
       const nodes = data['@graph'] || [data];
       for (const node of nodes) {
+        if (node['@type'] === 'Organization' && node.aggregateRating) {
+          errors.push(`${file}: dados estruturados contêm aggregateRating sem avaliações verificáveis`);
+        }
         if (node['@type'] === 'BlogPosting' && node.mainEntityOfPage !== canonical) {
           errors.push(`${file}: BlogPosting aponta para URL diferente do canonical`);
+        }
+        if (node['@type'] === 'BlogPosting') {
+          for (const field of ['headline', 'datePublished', 'dateModified', 'author', 'publisher', 'image', 'mainEntityOfPage']) {
+            if (!node[field]) errors.push(`${file}: BlogPosting sem ${field}`);
+          }
+        }
+        if (file.startsWith('servicos/') && node['@type'] === 'BreadcrumbList') {
+          const items = node.itemListElement;
+          if (!Array.isArray(items) || items.length < 3) errors.push(`${file}: BreadcrumbList incompleto`);
         }
       }
     }
@@ -111,6 +138,13 @@ for (const [file, html] of pages) {
 }
 
 const sitemap = await readFile(resolve(root, 'sitemap.xml'), 'utf8');
+const robots = await readFile(resolve(root, 'robots.txt'), 'utf8');
+if (!/^User-agent:\s*\*/m.test(robots) || !/^Allow:\s*\//m.test(robots)) {
+  errors.push('robots.txt: diretivas User-agent/Allow incorretas');
+}
+if (!/^Sitemap:\s*https:\/\/www\.raiolocal\.com\/sitemap\.xml$/m.test(robots)) {
+  errors.push('robots.txt: sitemap incorreto');
+}
 const sitemapLocations = new Set();
 for (const [, value] of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
   const url = new URL(value);

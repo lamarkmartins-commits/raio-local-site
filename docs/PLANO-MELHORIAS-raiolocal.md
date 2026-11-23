@@ -48,7 +48,7 @@ Este documento serve para **você** e para um **agente de código** (GitHub Copi
 | 5 dos 6 cliques vieram da home (posição ~7,6) | Só a home ranqueia bem; páginas de serviço e artigos não |
 | Páginas `.html` duplicadas indexadas (criação de sites, SEO local, perfil, usabilidade, página única) | Sinais de ranqueamento divididos entre 2 URLs do mesmo conteúdo |
 | Só a versão `.html` de SEO Local e Perfil da Empresa aparece | O Google escolheu a URL errada como principal |
-| Home espalhada em `/`, `/` e canonical em `/` | Canonical ignorado pelo Google |
+| Home espalhada em `/`, `/inicio` e canonical em `/inicio` | Canonical ignorado pelo Google |
 | `/blog/blog` indexada | Provável link relativo quebrado |
 | ~59 impressões em termos de SEO contra ~28 em criação de sites | Você aparece para quem não compra seu serviço |
 | Artigos em posição 5 a 10 têm 1 a 3 impressões | Ranqueiam para buscas que ninguém faz |
@@ -62,10 +62,10 @@ Este documento serve para **você** e para um **agente de código** (GitHub Copi
 - [ ] **Decisão:** a home oficial é `https://www.raiolocal.com/`.
 - **O que fazer**
   - Servir o conteúdo da home em `/`.
-  - Redirecionar com **301**: `/` → `/`, `/index` → `/`, `/` → `/`.
+  - Redirecionar com **301**: `/inicio` → `/`, `/index` → `/`, `/index.html` → `/`.
   - Atualizar na home: `<link rel="canonical" href="https://www.raiolocal.com/">` e `<meta property="og:url" content="https://www.raiolocal.com/">`.
-  - Corrigir todos os links internos que apontam para `/` ou `/index` (inclusive `#cases`, `#processo`, `#faq`, `#topo`): `grep -rniE "(/|/index)" .`
-- **Aceite:** `curl -sI https://www.raiolocal.com/` retorna `301` com `location: https://www.raiolocal.com/`; o canonical da home aponta para `/`.
+  - Corrigir todos os links internos que apontam para `/inicio` ou `/index` (inclusive `#cases`, `#processo`, `#faq`, `#topo`): `grep -rniE "(/inicio|/index)" .`
+- **Aceite:** `curl -sI https://www.raiolocal.com/inicio` retorna `301` com `location: https://www.raiolocal.com/`; o canonical da home aponta para `/`.
 
 ### TEC-02 · Eliminar duplicatas `.html` · P0
 - [ ] URLs afetadas (todas com 301 para a versão limpa):
@@ -96,13 +96,13 @@ Este documento serve para **você** e para um **agente de código** (GitHub Copi
 - **Aceite:** `curl -sIL -o /dev/null -w "%{num_redirects}\n" http://raiolocal.com/` retorna `1`.
 
 ### TEC-06 · Padronizar links internos · P0
-- [ ] Usar links na raiz (`/servicos/criacao-de-sites`) ou absolutos com `https://www.raiolocal.com`. Nunca `/index#…`, `/#…` ou relativos sem barra.
+- [ ] Usar links na raiz (`/servicos/criacao-de-sites`) ou absolutos com `https://www.raiolocal.com`. Nunca `/index#…`, `/inicio#…` ou relativos sem barra.
 - [ ] Rodapé: "Criação de sites com SEO", "Google Perfil da Empresa", "Consultoria em SEO local" e "Landing pages" hoje apontam para `#servicos`. Apontar para as páginas reais.
 - [ ] Card "Landing Pages" da home aponta para `/servicos/criacao-de-sites`; criar página própria (ONP-08) e apontar para ela.
-- **Aceite:** `grep` não encontra mais `/index#`, `/` nem `#servicos` no rodapé.
+- **Aceite:** `grep` não encontra mais `/index#`, `/inicio` nem `#servicos` no rodapé.
 
 ### TEC-07 · `sitemap.xml` e `robots.txt` · P1
-- [ ] `sitemap.xml` com **apenas** URLs canônicas (sem `.html`, sem `/`), `<lastmod>` com a data real da última alteração.
+- [ ] `sitemap.xml` com **apenas** URLs canônicas (sem `.html`, sem `/inicio`), `<lastmod>` com a data real da última alteração.
 - [ ] `robots.txt`:
   ```
   User-agent: *
@@ -505,7 +505,7 @@ Adicionar (com respostas reais) às FAQs da home e da página de serviço:
 - [ ] OFF-04, ACQ-01 a ACQ-04, UX-05, UX-06, UX-07, TEC-12 a TEC-14
 
 ### Checklist de validação final
-- [ ] `curl` confirma: `/`, `/index`, `*.html`, `/blog/blog` com `301`; `http://raiolocal.com` com apenas 1 redirecionamento
+- [ ] `curl` confirma: `/inicio`, `/index`, `*.html`, `/blog/blog` com `301`; `http://raiolocal.com` com apenas 1 redirecionamento
 - [ ] Script do Apêndice C sem alertas
 - [ ] Teste de Resultados Ricos sem erros
 - [ ] PageSpeed Insights (mobile) conferido nas 3 páginas-chave
@@ -521,9 +521,9 @@ Adicionar (com respostas reais) às FAQs da home e da página de serviço:
 
 ### A.1 Netlify / Cloudflare Pages (`_redirects` na raiz)
 ```
-/                                          /        301
+/inicio                                          /        301
 /index                                           /        301
-/                                      /        301
+/index.html                                      /        301
 /blog/blog                                       /blog/   301
 /servicos/criacao-de-sites.html                  /servicos/criacao-de-sites                    301
 /servicos/seo-local-google-mapas.html            /servicos/seo-local-google-mapas              301
@@ -542,7 +542,7 @@ Redirecionamento apex → `www`: configurar no painel de domínio/DNS do provedo
 {
   "cleanUrls": true,
   "redirects": [
-    { "source": "/", "destination": "/", "permanent": true },
+    { "source": "/inicio", "destination": "/", "permanent": true },
     { "source": "/index", "destination": "/", "permanent": true },
     { "source": "/blog/blog", "destination": "/blog/", "permanent": true },
     { "source": "/blog/importancia-site-negocios-locais-2026/", "destination": "/blog/por-que-ter-um-site-para-negocio-local/", "permanent": true },
@@ -594,7 +594,7 @@ server {
   listen 443 ssl;
   server_name www.raiolocal.com;
   # ssl_certificate ...
-  location = /    { return 301 /; }
+  location = /inicio    { return 301 /; }
   location = /index     { return 301 /; }
   location = /blog/blog { return 301 /blog/; }
   location ~ ^/(.+)\.html$ { return 301 /$1; }
@@ -607,7 +607,7 @@ server {
 for u in \
   http://raiolocal.com/ \
   https://raiolocal.com/ \
-  https://www.raiolocal.com/ \
+  https://www.raiolocal.com/inicio \
   https://www.raiolocal.com/index \
   https://www.raiolocal.com/blog/blog \
   https://www.raiolocal.com/servicos/criacao-de-sites.html \
@@ -783,7 +783,7 @@ for f in sorted(root.rglob("*.html")):
         flags.append(f"description({len(desc)})")
     if not canon:
         flags.append("sem canonical")
-    elif canon.endswith((".html", "/", "/index")):
+    elif canon.endswith((".html", "/inicio", "/index")):
         flags.append("canonical suspeito")
     if h1 != 1:
         flags.append(f"h1={h1}")

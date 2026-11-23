@@ -1,6 +1,8 @@
 import { readFile, writeFile } from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const read = path => readFile(resolve(root, path), 'utf8');
@@ -37,6 +39,37 @@ function replaceOnce(source, token, replacement) {
   return source.replace(token, replacement);
 }
 
+function gitLastModified(path) {
+  try {
+    const date = execFileSync('git', ['log', '-1', '--format=%cs', '--', path], {
+      cwd: root,
+      encoding: 'utf8'
+    }).trim();
+    return /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : null;
+  } catch {
+    return null;
+  }
+}
+
+function pageLastModified(path) {
+  if (path === '/') return gitLastModified('index.html');
+  if (path === '/blog/') return gitLastModified('blog/index.html');
+
+  if (path.startsWith('/blog/')) {
+    const slug = path.replace(/^\/blog\/|\/$/g, '');
+    try {
+      const html = readFileSync(resolve(root, `blog/${slug}/index.html`), 'utf8');
+      const date = html.match(/<meta[^>]+property=["']article:modified_time["'][^>]+content=["'](\d{4}-\d{2}-\d{2})/i)?.[1]
+        || html.match(/<time[^>]+datetime=["'](\d{4}-\d{2}-\d{2})["']/i)?.[1];
+      if (date) return date;
+    } catch {}
+    return gitLastModified(`blog/${slug}/index.html`);
+  }
+
+  const serviceSlug = path.replace(/^\/servicos\//, '');
+  return gitLastModified(`servicos/${serviceSlug}.html`);
+}
+
 const posts = JSON.parse(await read('content/posts.json'));
 const published = posts.filter(post => post.published);
 const slugs = new Set();
@@ -55,6 +88,31 @@ published.sort((a, b) =>
   a.order - b.order ||
   a.slug.localeCompare(b.slug)
 );
+
+for (const post of published) {
+  if (post.slug === 'o-que-e-trafego-pago') continue;
+  const articlePath = `blog/${post.slug}/index.html`;
+  let html = await read(articlePath);
+  html = html.replace(/<script\s+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g, (match, jsonText) => {
+    try {
+      const data = JSON.parse(jsonText);
+      const nodes = data['@graph'] || [data];
+      for (const node of nodes) {
+        if (node['@type'] === 'BlogPosting') {
+          node.datePublished = node.datePublished || post.datePublished;
+          node.dateModified = node.dateModified || post.datePublished;
+          node.image = node.image || (post.slug === 'quanto-custa-um-site-em-joao-pessoa'
+            ? 'https://www.raiolocal.com/site-bfgames-raio-local.png'
+            : 'https://www.raiolocal.com/og_image.jpg');
+        }
+      }
+      return match.replace(jsonText, JSON.stringify(data));
+    } catch {
+      return match;
+    }
+  });
+  await output(articlePath, html);
+}
 
 const featured = published[0];
 const featureArt = featured.featureArt || {
@@ -80,7 +138,10 @@ const sitePages = JSON.parse(await read('content/site-pages.json'));
 const sitemapUrls = [...sitePages, ...published.map(post => `/blog/${post.slug}/`)];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapUrls.map(path => `  <url><loc>https://www.raiolocal.com${path}</loc></url>`).join('\n')}
+${sitemapUrls.map(path => {
+  const lastmod = pageLastModified(path);
+  return `  <url><loc>https://www.raiolocal.com${path}</loc>${lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : ''}</url>`;
+}).join('\n')}
 </urlset>
 `;
 await output('sitemap.xml', sitemap);
@@ -101,6 +162,7 @@ const replacements = {
   '{{OG_DESCRIPTION}}': escapeHtml(pilot.ogDescription),
   '{{HEADLINE_JSON}}': JSON.stringify(pilot.headline),
   '{{DESCRIPTION_JSON}}': JSON.stringify(pilot.structuredDescription),
+  '{{DATE_PUBLISHED}}': pilot.datePublished || '2026-10-28',
   '{{DATE_MODIFIED}}': pilot.dateModified,
   '{{HEADER}}': header.trimEnd() + '\n',
   '{{CONTENT}}': content.trimEnd(),

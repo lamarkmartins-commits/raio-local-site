@@ -2,6 +2,14 @@
   RewriteEngine On
   RewriteBase /
 
+  ErrorDocument 404 /404.html
+
+  <IfModule mod_headers.c>
+    SetEnvIf Request_URI "^/(assets|.*\.(?:css|js|png|jpg|jpeg|webp|svg|woff|woff2)$)" ASSET_REQUEST
+    Header set X-Content-Type-Options "nosniff"
+    Header set Cache-Control "public, max-age=31536000, immutable" env=ASSET_REQUEST
+  </IfModule>
+
   # Consolidate HTTP and non-canonical hosts on HTTPS and www.
   RewriteCond %{HTTPS} !=on [OR]
   RewriteCond %{HTTP_HOST} !^www\.raiolocal\.com$ [NC]
@@ -13,6 +21,13 @@
 
   # Retire the former blog index URL; /blog/ is served by blog/.
   RewriteRule ^blog/blog(?:\.html)?/?$ /blog/ [R=301,L,NC]
+
+  # Standardize service URLs without a trailing slash.
+  RewriteRule ^servicos/(criacao-de-sites|seo-local-google-mapas|consultoria-google-perfil-da-empresa|consultoria-em-usabilidade|site-de-pagina-unica)/$ /servicos/$1 [R=301,L,NC]
+
+  # Standardize blog URLs with a trailing slash.
+  RewriteRule ^blog$ /blog/ [R=301,L,NC]
+  RewriteRule ^blog/([^/]+)$ /blog/$1/ [R=301,L,NC]
 
   # Remove index.html from subdirectory URLs.
   RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html(?:[?\s]) [NC]
