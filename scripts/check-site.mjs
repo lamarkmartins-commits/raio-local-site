@@ -62,6 +62,9 @@ for (const [file, html] of pages) {
   if (!redirect && /<meta\s+name="robots"\s+content="[^"]*noindex/i.test(html)) {
     errors.push(`${file}: página pública marcada como noindex`);
   }
+  if (/(?:href=["'](?:\.\/)?blog\/?|href=["']\/blog\/blog(?:\.html)?\/?)["']/i.test(html)) {
+    errors.push(`${file}: link gera ou aponta para /blog/blog`);
+  }
   if (!canonical) errors.push(`${file}: canonical ausente`);
   else if (!redirect && canonical !== base.href) errors.push(`${file}: canonical ${canonical} difere de ${base.href}`);
   if (!redirect && ogUrl !== canonical) errors.push(`${file}: og:url difere do canonical`);
