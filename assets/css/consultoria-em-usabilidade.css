@@ -25,7 +25,7 @@
 .usabilidade-visual .nav-box .dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.18)}
 .usabilidade-visual .panel{display:grid;gap:.9rem;padding:1rem;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025)}
 .usabilidade-visual .panel .badge{display:inline-flex;align-items:center;justify-content:center;width:max-content;padding:.42rem .7rem;border-radius:999px;background:rgba(255,90,31,.12);color:var(--accent);font:700 .72rem/1 var(--font-sans);letter-spacing:.08em;text-transform:uppercase}
-.usabilidade-visual .panel h3{font-size:1.3rem;line-height:1.1}
+.usabilidade-visual .panel strong{font-size:1.3rem;line-height:1.1}
 .usabilidade-visual .panel p{color:var(--muted);font-size:.9rem}
 .usabilidade-visual .mini-chart{display:grid;grid-template-columns:repeat(5,1fr);gap:.45rem;align-items:end;height:88px;padding-top:.4rem}
 .usabilidade-visual .mini-chart span{display:block;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--accent-2),var(--accent));opacity:.8}
