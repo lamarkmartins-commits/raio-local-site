@@ -202,62 +202,12 @@
 
   /* ---------- 7. Mock do SERP (digitação + estrelas) ---------- */
   const phrases = [
-    "frigorifico em joao pessoa",
     "pizzaria em joão pessoa",
     "dentista em manaíra joão pessoa",
     "clínica de estética cabo branco",
     "advogado trabalhista joão pessoa"
   ];
-  const publicResult = {
-    name: "FrigoMaster",
-    rating: "4,5",
-    reviewCount: 385,
-    status: "Supermercado · José Américo, João Pessoa",
-    initials: "FM",
-    href: "https://maps.app.goo.gl/1Sim6Fw9wcJ7nvj87"
-  };
-  const simulatedResult = {
-    name: "Seu Negócio Aqui",
-    rating: "5,0",
-    reviewCount: 127,
-    status: "Aberto agora · Fecha às 18h",
-    initials: "RL"
-  };
   let serpStarted = false;
-
-  function setSerpExample(wrap, index) {
-    const isPublicResult = index === 0;
-    const result = isPublicResult ? publicResult : simulatedResult;
-    const name = $(".serp-name", wrap);
-    name.textContent = result.name;
-    if (isPublicResult) {
-      name.href = result.href;
-      name.target = "_blank";
-      name.rel = "noopener noreferrer";
-    } else {
-      name.removeAttribute("href");
-      name.removeAttribute("target");
-      name.removeAttribute("rel");
-    }
-
-    $(".serp-grade", wrap).textContent = result.rating;
-    const reviewCount = $("[data-count]", wrap);
-    reviewCount.dataset.count = String(result.reviewCount);
-    reviewCount.textContent = String(result.reviewCount);
-
-    const status = $(".serp-status", wrap);
-    status.classList.toggle("serp-status--category", isPublicResult);
-    $(".serp-status-text", status).textContent = result.status;
-    $(".serp-avatar", wrap).textContent = result.initials;
-
-    const card = $(".serp-card", wrap);
-    card.setAttribute(
-      "aria-label",
-      isPublicResult
-        ? "Resultado público do Google Maps para FrigoMaster, consultado em 24 de novembro de 2026"
-        : `Exemplo ilustrativo de resultado para a busca ${phrases[index]}`
-    );
-  }
 
   function playSerp(wrap) {
     if (serpStarted) return;
@@ -266,18 +216,13 @@
     // Digitação
     const out = $("#serp-query");
     if (!out) return;
-    setSerpExample(wrap, 0);
     if (RM) { out.textContent = phrases[0]; return; }
     let pi = 0;
     const type = (str, i, del) => {
       out.textContent = str.slice(0, i);
       let delay = del ? 26 : 55;
       if (!del && i === str.length) { delay = 2200; }
-      else if (del && i === 0) {
-        delay = 300;
-        pi = (pi + 1) % phrases.length;
-        setSerpExample(wrap, pi);
-      }
+      else if (del && i === 0) { delay = 300; pi = (pi + 1) % phrases.length; }
       setTimeout(() => {
         const s = phrases[pi];
         if (!del && i < s.length) return type(s, i + 1, false);
