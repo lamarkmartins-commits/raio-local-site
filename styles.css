@@ -233,13 +233,15 @@ padding:1.3rem;box-shadow:0 30px 80px rgba(0,0,0,.5);
 .serp-avatar{
 width:56px;height:56px;flex:none;border-radius:14px;background:var(--ink);color:var(--accent);
 display:grid;place-items:center;
+font:700 .88rem/1 var(--font-sans);letter-spacing:.02em;
 }
-.serp-avatar img{width:38px;height:38px;object-fit:contain}
 .serp-data{display:grid;gap:.3rem;min-width:0}
 .serp-name{font-weight:700;font-size:1.05rem}
 .serp-rating{display:flex;align-items:center;gap:.4rem;font-size:.85rem;color:#5f6368;flex-wrap:wrap}
 .serp-rating .star{color:#dadce0}
 .serp-status{font-size:.8rem;color:#188038;display:flex;align-items:center;gap:.4rem}
+.serp-status--category{color:#5f6368}
+.serp-status--category .dot-on{display:none}
 .dot-on{width:7px;height:7px;border-radius:50%;background:#188038}
 .serp-actions{display:flex;gap:.5rem;margin-top:.35rem;flex-wrap:wrap}
 .serp-chip{
